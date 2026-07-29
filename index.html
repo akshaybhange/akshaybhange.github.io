@@ -1,175 +1,795 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Akshay Bhange — Product Manager</title>
-  <meta name="description" content="Product Manager with 10+ years experience in software development, customer onboarding, and delivering impactful solutions.">
+  <meta name="description" content="Akshay Bhange — Product Manager with 10+ years experience in DevTools, FinTech & SaaS. Launched 3 apps with 1M+ downloads each.">
 
   <link rel="icon" href="favicon.ico" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* ===== Reset & Base ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+      font-feature-settings: 'cv01', 'ss03';
+    }
+
+    body {
+      background: #08090a;
+      color: #d0d6e0;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    ::selection {
+      background: rgba(113, 112, 255, 0.3);
+      color: #f7f8f8;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== Nav ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(8, 9, 10, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      z-index: 100;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #f7f8f8;
+      letter-spacing: -0.3px;
+    }
+
+    .logo span { color: #7170ff; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 510;
+      color: #8a8f98;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: #7170ff;
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: #f7f8f8; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: #5e6ad2;
+      color: #fff !important;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-weight: 500 !important;
+      font-size: 0.85rem !important;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover { background: #7170ff; }
+
+    .mobile-toggle { display: none; color: #f7f8f8; font-size: 1.5rem; cursor: pointer; }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 160px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(94,106,210,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 9999px;
+      padding: 6px 16px 6px 6px;
+      font-size: 0.8rem;
+      color: #8a8f98;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 510;
+      line-height: 1.05;
+      letter-spacing: -1.6px;
+      color: #f7f8f8;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span { color: #7170ff; }
+
+    .hero p {
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #8a8f98;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: #5e6ad2;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #7170ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.02);
+      color: #d0d6e0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.05);
+      color: #f7f8f8;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image .mock-icon {
+      width: 340px;
+      height: 340px;
+      background: radial-gradient(circle at 30% 30%, rgba(94,106,210,0.12), rgba(8,9,10,1) 70%);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .mock-icon .big-num {
+      font-size: 5rem;
+      font-weight: 700;
+      color: #f7f8f8;
+      letter-spacing: -3px;
+      line-height: 1;
+    }
+
+    .mock-icon .big-num span { color: #7170ff; }
+
+    .mock-icon .sub {
+      font-size: 0.85rem;
+      color: #62666d;
+      text-align: center;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .mock-icon .mini-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mock-icon .mini-stats div { text-align: center; }
+    .mock-icon .mini-stats .num { font-size: 1.1rem; font-weight: 600; color: #f7f8f8; display: block; }
+    .mock-icon .mini-stats .lbl { font-size: 0.7rem; color: #62666d; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ===== Stats Bar ===== */
+    .stats-bar {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 40px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat-item {
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      padding: 0 20px;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 510;
+      color: #f7f8f8;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #62666d;
+      font-weight: 500;
+    }
+
+    /* ===== Section Shared ===== */
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #7170ff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 510;
+      line-height: 1.1;
+      letter-spacing: -1.1px;
+      color: #f7f8f8;
+      margin-bottom: 48px;
+    }
+
+    .section-title-sm {
+      font-size: 1.8rem;
+      font-weight: 510;
+      letter-spacing: -0.7px;
+      color: #f7f8f8;
+      margin-bottom: 36px;
+    }
+
+    /* ===== Experience Timeline ===== */
+    .timeline {
+      position: relative;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 40px;
+      padding-bottom: 48px;
+    }
+
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #5e6ad2;
+      border: 2px solid #08090a;
+    }
+
+    .tl-dot.highlight { background: #10b981; }
+
+    .tl-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 4px;
+    }
+
+    .tl-role {
+      font-size: 1.05rem;
+      font-weight: 590;
+      color: #f7f8f8;
+    }
+
+    .tl-company {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #7170ff;
+    }
+
+    .tl-date {
+      font-size: 0.8rem;
+      color: #62666d;
+      font-weight: 400;
+      margin-left: auto;
+    }
+
+    .tl-list {
+      margin-top: 12px;
+    }
+
+    .tl-list li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: #8a8f98;
+      line-height: 1.65;
+    }
+
+    .tl-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 1px;
+      background: #62666d;
+    }
+
+    .tl-list li strong { color: #d0d6e0; }
+
+    /* ===== Education + Certs ===== */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .edu-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .edu-card:hover { border-color: rgba(255,255,255,0.12); }
+
+    .edu-degree {
+      font-size: 1rem;
+      font-weight: 590;
+      color: #f7f8f8;
+      margin-bottom: 6px;
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: #8a8f98;
+      margin-bottom: 4px;
+    }
+
+    .edu-year {
+      font-size: 0.8rem;
+      color: #7170ff;
+      font-weight: 500;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    .cert-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+    .cert-card i { color: #5e6ad2; margin-bottom: 8px; font-size: 1.1rem; }
+    .cert-card span { font-size: 0.82rem; color: #8a8f98; line-height: 1.5; display: block; }
+
+    /* ===== Skills ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .skill-cat h4 {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #f7f8f8;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tags span {
+      display: inline-block;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      color: #d0d6e0;
+      font-weight: 400;
+      transition: all 0.2s;
+    }
+
+    .skill-tags span:hover {
+      background: rgba(94,106,210,0.1);
+      border-color: rgba(94,106,210,0.3);
+      color: #f7f8f8;
+    }
+
+    /* ===== Contact ===== */
+    .contact-section {
+      text-align: center;
+      padding: 80px 0 100px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .contact-section .section-title {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-section p {
+      font-size: 1rem;
+      color: #8a8f98;
+      max-width: 460px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-links .btn i { font-size: 1rem; }
+
+    /* ===== Footer ===== */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #62666d;
+      font-size: 0.8rem;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      color: #62666d;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: #f7f8f8; }
+
+    /* ===== Mobile ===== */
+    @media (max-width: 768px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.5rem; letter-spacing: -1.1px; }
+      .hero-image .mock-icon { width: 260px; height: 260px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(1),
+      .stat-item:nth-child(2) { padding-bottom: 20px; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 56px; left: 0; width: 100%; background: #08090a; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 16px 24px; gap: 16px; }
+      .mobile-toggle { display: block; }
+      .tl-header { flex-direction: column; gap: 2px; }
+      .tl-date { margin-left: 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding: 120px 0 60px; }
+      .hero h1 { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .stat-num { font-size: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Nav -->
-  <nav class="navbar">
+  <nav>
     <div class="container nav-inner">
-      <span class="logo">AB</span>
-      <div class="nav-links">
+      <a href="#" class="logo">Akshay<span>.</span></a>
+      <div class="nav-links" id="navLinks">
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
+        <a href="mailto:akshay.bhange0@gmail.com" class="nav-cta">Let's Talk</a>
+      </div>
+      <div class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+        <i class="fas fa-bars"></i>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero" id="hero">
+  <section class="hero">
     <div class="container">
-      <div class="hero-badge">Product Management · DevTools · FinTech · SaaS</div>
-      <h1 class="hero-name">Akshay Bhange</h1>
-      <p class="hero-tagline">
-        Product Manager with 10+ years experience — launched 3 apps surpassing <strong>1M+ downloads each</strong>,
-        built a Consumer Loyalty SaaS from scratch, and drove <strong>20% user engagement</strong> growth through
-        strategic feature rollouts.
-      </p>
-      <div class="hero-cta">
-        <a href="mailto:akshay.bhange0@gmail.com" class="btn btn-primary">✉️ Contact Me</a>
-        <a href="https://linkedin.com/in/akshaybhange" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      </div>
-      <div class="hero-social">
-        <a target="_blank" href="https://play.google.com/store/apps/dev?id=7453591930180720827"><i class="fab fa-google-play"></i></a>
-        <a target="_blank" href="https://github.com/akshaybhange"><i class="fab fa-github"></i></a>
-        <a target="_blank" href="https://twitter.com/Ak_bhange"><i class="fab fa-twitter"></i></a>
-        <a target="_blank" href="https://stackoverflow.com/users/3846715/akshay-bhange"><i class="fab fa-stack-overflow"></i></a>
-        <a target="_blank" href="https://medium.com/@akshay.bhange"><i class="fab fa-medium"></i></a>
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Available for opportunities
+          </div>
+          <h1>
+            Product Manager<br>
+            who <span>builds</span> what<br>
+            users actually need.
+          </h1>
+          <p>
+            10+ years shipping products in DevTools, FinTech, SaaS, and e-commerce.
+            Launched 3 apps with <strong style="color:#d0d6e0;">1M+ downloads each</strong> — from ideation to scale.
+          </p>
+          <div class="hero-cta">
+            <a href="mailto:akshay.bhange0@gmail.com" class="btn btn-primary">
+              <i class="far fa-envelope"></i> akshay.bhange0@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/akshaybhange" target="_blank" class="btn btn-ghost">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/akshaybhange" target="_blank" class="btn btn-ghost">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="mock-icon">
+            <div class="big-num">3<span>M</span>+</div>
+            <div class="sub">total app downloads across<br>three programming education apps</div>
+            <div class="mini-stats">
+              <div>
+                <span class="num">10+</span>
+                <span class="lbl">SaaS Clients</span>
+              </div>
+              <div>
+                <span class="num">33%</span>
+                <span class="lbl">TTV Reduction</span>
+              </div>
+              <div>
+                <span class="num">95%</span>
+                <span class="lbl">CSAT Score</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Stats -->
-  <section class="stats">
-    <div class="container stats-grid">
-      <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">Apps with 1M+ Downloads</span></div>
-      <div class="stat-item"><span class="stat-num">10+</span><span class="stat-label">SaaS Customers Onboarded</span></div>
-      <div class="stat-item"><span class="stat-num">33%</span><span class="stat-label">Reduced Onboarding TTV</span></div>
-      <div class="stat-item"><span class="stat-num">95%</span><span class="stat-label">Customer Satisfaction</span></div>
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Apps · 1M+ Downloads</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">SaaS Customers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">33%</div>
+          <div class="stat-label">Reduced Time to Value</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">95%</div>
+          <div class="stat-label">Customer Satisfaction</div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- Experience -->
   <section class="section" id="experience">
     <div class="container">
+      <div class="section-label">/ career</div>
       <h2 class="section-title">Experience</h2>
 
       <div class="timeline">
+        <div class="timeline-line"></div>
 
-        <div class="timeline-item">
+        <!-- Perforce -->
+        <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Product Manager</h3>
-              <span class="tl-company">Perforce Software</span>
-              <span class="tl-date">Jan 2025 – Present</span>
-            </div>
-            <ul>
-              <li>Initiated and led Nupi's Consumer Loyalty & Rewards program — built Web SDK & Shopify plugin with a team of 8, helping 10+ customers boost repeat purchase rate by 15%.</li>
-              <li>Ideated and built Consumer Loyalty SaaS platform, securing 10+ customers for the organization.</li>
-              <li>Analyzed and documented requirements, designed wireframes & managed roadmaps for 4 concurrent projects.</li>
-              <li>Leading 2 APMs in managing product documentation and smooth execution of product plans.</li>
-              <li>Delivered critical features in existing product, increasing user engagement by ~20%.</li>
-            </ul>
+          <div class="tl-header">
+            <span class="tl-role">Product Manager</span>
+            <span class="tl-company">Perforce Software</span>
+            <span class="tl-date">Jan 2025 – Present</span>
           </div>
+          <ul class="tl-list">
+            <li>Led Nupi's Consumer Loyalty & Rewards SaaS — built Web SDK & Shopify plugin with a team of 8, driving <strong>15% repeat purchase rate</strong> increase across 10+ customers.</li>
+            <li>Managed roadmaps, wireframes, and requirements for <strong>4 concurrent projects</strong>.</li>
+            <li>Delivered critical features increasing <strong>user engagement by ~20%</strong>.</li>
+            <li>Mentored 2 Associate Product Managers in documentation and execution.</li>
+          </ul>
         </div>
 
-        <div class="timeline-item">
+        <!-- Nupi -->
+        <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Product Manager</h3>
-              <span class="tl-company">Nupi Infotech LTD</span>
-              <span class="tl-date">Jul 2024 – Jan 2025</span>
-            </div>
-            <ul>
-              <li>Initiated and led Nupi's Consumer Loyalty & Rewards program — built Web SDK & Shopify plugin with a team of 8.</li>
-              <li>Ideated and built Consumer Loyalty SaaS platform, securing 10+ customers.</li>
-              <li>Analyzed and documented requirements, designed wireframes & managed roadmaps for 4 concurrent projects.</li>
-              <li>Delivered critical features increasing user engagement by ~20%.</li>
-            </ul>
+          <div class="tl-header">
+            <span class="tl-role">Product Manager</span>
+            <span class="tl-company">Nupi Infotech LTD</span>
+            <span class="tl-date">Jul 2024 – Jan 2025</span>
           </div>
+          <ul class="tl-list">
+            <li>Built Consumer Loyalty SaaS platform from scratch — onboarded <strong>10+ customers</strong>.</li>
+            <li>Led 8 developers to ship Web SDK & Shopify plugin in <strong>4 months</strong>.</li>
+            <li>Designed wireframes & managed product roadmaps across multiple workstreams.</li>
+          </ul>
         </div>
 
-        <div class="timeline-item">
+        <!-- CleverTap -->
+        <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Product Onboarding Manager</h3>
-              <span class="tl-company">CleverTap PVT LTD</span>
-              <span class="tl-date">Oct 2022 – Mar 2024</span>
-            </div>
-            <ul>
-              <li>Helped key customers implement business use-cases with techno-functional expertise around product integration.</li>
-              <li>Led the first major optimization of the onboarding process — reduced Time to Value (TTV) by 33%.</li>
-              <li>Delegated with functional & technical teams to provide solutions for customer business use cases.</li>
-              <li>Achieved 95% Customer Satisfaction rating through proactive communication and efficient issue resolution.</li>
-              <li>Improved documentation clarity & accessibility, reducing customer inquiries by ~15%.</li>
-            </ul>
+          <div class="tl-header">
+            <span class="tl-role">Product Onboarding Manager</span>
+            <span class="tl-company">CleverTap</span>
+            <span class="tl-date">Oct 2022 – Mar 2024</span>
           </div>
+          <ul class="tl-list">
+            <li>Transformed customer onboarding — reduced <strong>Time to Value by 33%</strong> and cut customer inquiries by <strong>15%</strong> through better documentation and processes.</li>
+            <li>Achieved <strong>95% Customer Satisfaction</strong> rating via proactive communication and issue resolution.</li>
+            <li>Consulted key customers on product integration and business use-case implementation.</li>
+          </ul>
         </div>
 
-        <div class="timeline-item">
+        <!-- Setu -->
+        <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Senior Developer</h3>
-              <span class="tl-company">Setu Nutrition PVT LTD</span>
-              <span class="tl-date">Oct 2019 – Oct 2022</span>
-            </div>
-            <ul>
-              <li>First hire on Tech & Product team — spearheaded two ecommerce apps from ideation to execution (100k+ downloads each).</li>
-              <li>Owned product strategies, design, content & development. Managed a team of 4.</li>
-              <li>Handled roadmap, analysis, execution and documentation for 2 mobile apps & website.</li>
-              <li>Engaged with customers, addressing pain points and implementing feedback for continuous improvement.</li>
-            </ul>
+          <div class="tl-header">
+            <span class="tl-role">Senior Developer</span>
+            <span class="tl-company">Setu Nutrition</span>
+            <span class="tl-date">Oct 2019 – Oct 2022</span>
           </div>
+          <ul class="tl-list">
+            <li>First tech & product hire — built two ecommerce apps from scratch, reaching <strong>100k+ downloads</strong> each.</li>
+            <li>Owned product strategy, design, development and managed a team of 4.</li>
+          </ul>
         </div>
 
-        <div class="timeline-item">
+        <!-- Ingram Micro -->
+        <div class="tl-item">
           <div class="tl-dot"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Software Engineer</h3>
-              <span class="tl-company">Ingram Micro SSC PVT LTD</span>
-              <span class="tl-date">Jul 2016 – Oct 2019</span>
-            </div>
-            <ul>
-              <li>Liaised with business teams to understand pain points and delivered automation to reduce manual work.</li>
-              <li>Worked on Android app development for B2B e-commerce application.</li>
-              <li>Created semi-automated dashboards, saving 100 hours/week for the data entry team.</li>
-              <li>Conducted internal tests, UAT, and post-deployment support. Led code review sessions for junior team members.</li>
-            </ul>
+          <div class="tl-header">
+            <span class="tl-role">Software Engineer</span>
+            <span class="tl-company">Ingram Micro</span>
+            <span class="tl-date">Jul 2016 – Oct 2019</span>
           </div>
+          <ul class="tl-list">
+            <li>Automated manual workflows — created dashboards saving <strong>100+ hours/week</strong> for the data entry team.</li>
+            <li>Built Android B2B e-commerce app; led code reviews and UAT.</li>
+          </ul>
         </div>
 
-        <div class="timeline-item">
-          <div class="tl-dot tl-dot-highlight"></div>
-          <div class="tl-content">
-            <div class="tl-header">
-              <h3>Founder — Mobile Applications</h3>
-              <span class="tl-company">Independent</span>
-              <span class="tl-date">Mar 2014 – Oct 2019</span>
-            </div>
-            <ul>
-              <li>Created and released three programming education apps (C, C++, Java) — <strong>each surpassing 1 million downloads</strong>.</li>
-              <li>Led product development, growth initiatives, and vastly improved global student access to coding education.</li>
-            </ul>
+        <!-- Founder -->
+        <div class="tl-item">
+          <div class="tl-dot highlight"></div>
+          <div class="tl-header">
+            <span class="tl-role">Founder — Mobile Apps</span>
+            <span class="tl-company">Independent</span>
+            <span class="tl-date">2014 – 2019</span>
           </div>
+          <ul class="tl-list">
+            <li>Created and released <strong>3 programming education apps</strong> (C, C++, Java) — each surpassing <strong>1 million downloads</strong>.</li>
+            <li>End-to-end product development: ideation, design, growth, and global distribution.</li>
+          </ul>
         </div>
 
       </div>
@@ -177,9 +797,11 @@
   </section>
 
   <!-- Education -->
-  <section class="section section-alt" id="education">
+  <section class="section" id="education">
     <div class="container">
-      <h2 class="section-title">Education</h2>
+      <div class="section-label">/ background</div>
+      <h2 class="section-title">Education & Certifications</h2>
+
       <div class="edu-grid">
         <div class="edu-card">
           <div class="edu-degree">MBA, Information Management</div>
@@ -193,17 +815,17 @@
         </div>
       </div>
 
-      <h3 class="subsection-title">Certifications</h3>
-      <div class="cert-list">
-        <div class="cert-item">
+      <h3 style="font-size:1.1rem;font-weight:590;color:#f7f8f8;margin-bottom:20px;">Certifications</h3>
+      <div class="cert-grid">
+        <div class="cert-card">
           <i class="fas fa-certificate"></i>
-          <span>Software Product Management Certification — University of Alberta (Coursera)</span>
+          <span>Software Product Management — University of Alberta (Coursera)</span>
         </div>
-        <div class="cert-item">
+        <div class="cert-card">
           <i class="fas fa-certificate"></i>
-          <span>Great Product Manager: Product Management by Microsoft's PM (Udemy)</span>
+          <span>Product Management by Microsoft PM — Udemy</span>
         </div>
-        <div class="cert-item">
+        <div class="cert-card">
           <i class="fas fa-certificate"></i>
           <span>Advanced Google Analytics — Google Analytics Academy</span>
         </div>
@@ -214,34 +836,53 @@
   <!-- Skills -->
   <section class="section" id="skills">
     <div class="container">
+      <div class="section-label">/ toolkit</div>
       <h2 class="section-title">Skills & Tools</h2>
+
       <div class="skills-grid">
-        <div class="skill-category">
+        <div class="skill-cat">
           <h4>📊 Analytics</h4>
           <div class="skill-tags">
-            <span>Google Analytics</span><span>CleverTap</span><span>Mixpanel</span>
-            <span>Amplitude</span><span>AppsFlyer</span>
+            <span>Google Analytics</span>
+            <span>CleverTap</span>
+            <span>Mixpanel</span>
+            <span>Amplitude</span>
+            <span>AppsFlyer</span>
           </div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h4>🛠️ Software</h4>
           <div class="skill-tags">
-            <span>Jira</span><span>Asana</span><span>Figma</span><span>Trello</span>
-            <span>Google Tag Manager</span><span>SurveyMonkey</span><span>Confluence</span><span>Postman</span>
+            <span>Jira</span>
+            <span>Asana</span>
+            <span>Figma</span>
+            <span>Trello</span>
+            <span>GTM</span>
+            <span>Confluence</span>
+            <span>Postman</span>
           </div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h4>💻 Development</h4>
           <div class="skill-tags">
-            <span>Java</span><span>Kotlin</span><span>Flutter</span><span>Firebase</span>
-            <span>Swift</span><span>SQL</span><span>Firestore</span>
+            <span>Java</span>
+            <span>Kotlin</span>
+            <span>Flutter</span>
+            <span>Firebase</span>
+            <span>Swift</span>
+            <span>SQL</span>
+            <span>Firestore</span>
           </div>
         </div>
-        <div class="skill-category">
+        <div class="skill-cat">
           <h4>🧠 Product</h4>
           <div class="skill-tags">
-            <span>Roadmap Planning</span><span>Wireframing</span><span>User Research</span>
-            <span>A/B Testing</span><span>Agile/Scrum</span><span>PRD Writing</span>
+            <span>Roadmap Planning</span>
+            <span>User Research</span>
+            <span>A/B Testing</span>
+            <span>Wireframing</span>
+            <span>Agile / Scrum</span>
+            <span>PRD Writing</span>
           </div>
         </div>
       </div>
@@ -249,16 +890,26 @@
   </section>
 
   <!-- Contact -->
-  <section class="section section-alt" id="contact">
-    <div class="container contact-inner">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-text">
-        I'm always open to interesting conversations — product strategy, SaaS, mobile apps, or just saying hi.
+  <section class="contact-section">
+    <div class="container">
+      <div class="section-label">/ connect</div>
+      <h2 class="section-title">Let's build something.</h2>
+      <p>
+        Whether you have a product challenge, a collaboration idea, or just want to say hi — I'm always open to good conversations.
       </p>
       <div class="contact-links">
-        <a href="mailto:akshay.bhange0@gmail.com" class="btn btn-primary"><i class="far fa-envelope"></i> akshay.bhange0@gmail.com</a>
-        <a href="https://linkedin.com/in/akshaybhange" target="_blank" class="btn btn-secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/akshaybhange" target="_blank" class="btn btn-secondary"><i class="fab fa-github"></i> GitHub</a>
+        <a href="mailto:akshay.bhange0@gmail.com" class="btn btn-primary">
+          <i class="far fa-envelope"></i> Send an email
+        </a>
+        <a href="https://linkedin.com/in/akshaybhange" target="_blank" class="btn btn-ghost">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="https://github.com/akshaybhange" target="_blank" class="btn btn-ghost">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://twitter.com/Ak_bhange" target="_blank" class="btn btn-ghost">
+          <i class="fab fa-twitter"></i> Twitter
+        </a>
       </div>
     </div>
   </section>
@@ -267,11 +918,11 @@
   <footer>
     <div class="container footer-inner">
       <span>&copy; 2026 Akshay Bhange</span>
-      <span class="footer-links">
-        <a href="https://twitter.com/Ak_bhange" target="_blank"><i class="fab fa-twitter"></i></a>
+      <div class="footer-social">
         <a href="https://medium.com/@akshay.bhange" target="_blank"><i class="fab fa-medium"></i></a>
         <a href="https://stackoverflow.com/users/3846715/akshay-bhange" target="_blank"><i class="fab fa-stack-overflow"></i></a>
-      </span>
+        <a href="https://play.google.com/store/apps/dev?id=7453591930180720827" target="_blank"><i class="fab fa-google-play"></i></a>
+      </div>
     </div>
   </footer>
 
