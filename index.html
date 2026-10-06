@@ -231,6 +231,8 @@
     }
 
     .cta:hover { background: var(--accent-2); transform: translateY(-1px); }
+    /* .nav-links a beats .cta on specificity — re-assert white text on accent bg */
+    .nav-links a.cta, .nav-links a.cta:hover { color: #fff; }
     .cta:active { transform: scale(0.98); }
 
     .mobile-toggle { display: none; }
@@ -971,10 +973,10 @@
             <span class="tl-date">Jan 2025 - Present</span>
           </div>
           <ul class="tl-list">
-            <li>Own product strategy for <strong>JRebel &amp; XRebel</strong> — Perforce's developer productivity suite — managing a combined <strong>$10M ARR</strong> portfolio.</li>
-            <li>Led portfolio launches: <strong>XRebel relaunch</strong> and <strong>JRebel Broker</strong>.</li>
-            <li>Migrated <strong>120+ customers</strong> from on-prem to the Cloud License Server, protecting <strong>$1M in revenue</strong> through the transition.</li>
-            <li>Shipped <strong>AI agent-skills for JRebel &amp; XRebel</strong>, embedding AI assistance directly into developers' workflows.</li>
+            <li>Own product strategy for <strong>JRebel and XRebel</strong>, Perforce's Java developer tools, <strong>$10M ARR</strong> combined.</li>
+            <li>Took the <strong>XRebel relaunch</strong> and <strong>JRebel Broker</strong> to market.</li>
+            <li>Moved <strong>120+ customers</strong> from on-prem to the Cloud License Server without losing <strong>$1M in revenue</strong>.</li>
+            <li>Wrote <strong>AI agent-skills</strong> for JRebel and XRebel, so AI coding assistants can set up and explain the tools.</li>
           </ul>
         </div>
 
